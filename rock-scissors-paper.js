@@ -11,6 +11,26 @@ Example:
 node rockPaperScissors.js rock
 # Output: You chose rock. Computer chose scissors. You win!*/
 
+const colors = {
+    reset: '\033[0m',
+    black: '\033[30m',
+    red: '\033[31m',
+    green: '\033[32m',
+    yellow: '\033[33m',
+    blue: '\033[34m',
+    magenta: '\033[35m',
+    cyan: '\033[36m',
+    white: '\033[37m',
+    blackBg: '\033[40m',
+    redBg: '\033[41m',
+    greenBg: '\033[42m',
+    yellowBg: '\033[43m',
+    blueBg: '\033[44m',
+    magentaBg: '\033[45m',
+    cyanBg: '\033[46m',
+    whiteBg: '\033[47m',
+};
+
 const userChoiceArray = process.argv.slice(2);
 const userChoice = userChoiceArray[0];
 const choices = ["rock", "scissors", "paper"];
@@ -23,27 +43,26 @@ function getRandomElement(choices) {
 };
 
 if (userChoice !== "rock" && userChoice !== "scissors" && userChoice !== "paper") {
-    console.error('Please choose rock, scissors or paper to play!');
+    console.log(`${colors.red}${colors.whiteBg}Please choose rock, scissors or paper to play!${colors.reset}`);
     return;
-} else {console.log(`%cWelcome to the game!`,
-    "font-weight: bold; font-size: 50px; color: red; text-shadow: 3px 3px 0 rgb(217,31,38), 6px 6px 0 rgb(226,91,14), 9px 9px 0 rgb(245,221,8), 12px 12px 0 rgb(5,148,68), 15px 15px 0 rgb(2,135,206), 18px 18px 0 rgb(4,77,145), 21px 21px 0 rgb(42,21,113); margin-bottom: 12px; padding: 5%;"
-  ); console.log(`%cYou have chosen ${userChoice}! 🦄`, "font-weight: bold; font-size: 20px;");
+} else {console.log(`${colors.whiteBg}${colors.red}Welcome to the game!${colors.reset}`,
+    ); console.log(`${colors.greenBg}${colors.white}You have chosen ${userChoice}!${colors.reset}`);
 }
 const computerChoice = getRandomElement(choices);
-console.log(`%cThe Computer has chosen ${computerChoice}🥁! It is getting exciting!`,"font-weight: bold; font-size: 20px;");
+console.log(`${colors.cyanBg}${colors.black}The Computer has chosen ${computerChoice}! It is getting exciting!${colors.reset}`);
 
 if (userChoice === computerChoice) {
-    console.log("%cIt's a tie! 👔 You are lucky!", "font-weight: bold; font-size: 20px;");
+    console.log(`${colors.yellowBg}${colors.green}It's a tie! You are lucky!${colors.reset}`);
 }
 else if (
     (userChoice === 'rock' && computerChoice === 'scissors') ||
     (userChoice === 'paper' && computerChoice === 'rock') ||
     (userChoice === 'scissors' && computerChoice === 'paper')
 ){
-    console.log("%cYou won! 🎆", "font-weight: bold; font-size: 50px; color: red; text-shadow: 3px 3px 0 rgb(217,31,38), 6px 6px 0 rgb(226,91,14), 9px 9px 0 rgb(245,221,8), 12px 12px 0 rgb(5,148,68), 15px 15px 0 rgb(2,135,206), 18px 18px 0 rgb(4,77,145), 21px 21px 0 rgb(42,21,113); margin-bottom: 12px; padding: 5%;");
+    console.log(`${colors.magentaBg}${colors.blue}You won!${colors.reset}`);
 }
 else {
-    console.log("%cYou lost! 😥 I am sorry!", "font-weight: bold; font-size: 20px;")
+    console.log(`${colors.redBg}${colors.cyan}You lost! I am sorry!${colors.reset}`)
 };
 
 
