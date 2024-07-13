@@ -17,16 +17,43 @@ Caesar Cipher
 */
 
 
-/*const orgInput = process.argv.slice(2);*/
-const orgInput = "this is example input"
-let orgIArr = orgInput.split(' ');
+const orgInput = process.argv.slice(2);
+//const orgInput = "this is example input 2"
+let inString = orgInput.filter(item => isNaN(item));
+//let orgIArr = inString.split(' ');
+let shiftNumber = orgInput.filter(item => !isNaN(item));
+let number = Number(shiftNumber);
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M','N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-orgIArr.forEach(word => {
+console.log(inString);
+console.log(number);
+
+let newText =[];
+
+inString.forEach(word => {
     const letters = word.toUpperCase().split('');
-    letters.forEach(letter => {
+    let newWord = letters.map( letter => {
         const index = alphabet.findIndex(alphabetLetter => alphabetLetter === letter);
-        return(index);
-    })
+
+        if (index !== -1){
+            const newIndex = (index+number) % alphabet.length;
+            const wrappedIndex = newIndex < 0 ? alphabet.length +newIndex: newIndex ;
+            //console.log(`New index for ${letter} is: ${wrappedIndex}`)
+            
+            const newLetter = alphabet[wrappedIndex];
+            return newLetter.toLowerCase();
+            console.log(newLetter.toLowerCase());}
+        else {
+            return letter;
+        }
+        
+       
+    });
+
+    newText.push(newWord.join(''));
+
 });
 
+
+
+console.log(newText.join(' '));
