@@ -43,7 +43,7 @@ function getRandomElement(choices) {
 };
 
 if (userChoice !== "rock" && userChoice !== "scissors" && userChoice !== "paper") {
-    console.log(`${colors.red}${colors.whiteBg}Please choose rock 🗻, scissors ✂ or paper 📃 to play!${colors.reset}`);
+    console.log(`${colors.red}${colors.whiteBg}Please choose rock 🗻, scissors ✂  or paper 📃 to play!${colors.reset}`);
     return;
 } else {console.log(`${colors.whiteBg}${colors.red}Welcome to the game!${colors.reset}`,
     ); console.log(`${colors.greenBg}${colors.white}You have chosen ${userChoice}!${colors.reset}`);
